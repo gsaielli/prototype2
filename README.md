@@ -30,11 +30,19 @@ Il programma scrive una dato sulla scheda, poi lo rilegge e lo stampa sulla cons
 ## Modificare dati e registri di scrittura
 Vai alla fine del file server.js, dove trovi le righe:
 
-```bash
+```js
 modbus.addCmd('RESET')
 modbus.addCmd([66, 1])
 ```
 
-La prima riga cancella tutti i registri da 0 a 99. La seconda scrive 1 nel registro 66. Puoi modificare finchè ti pare.
+La prima riga cancella tutti i registri da 0 a 99. La seconda scrive 1 nel registro 66. Puoi modificare questi parametri finchè ti pare.
+Se non vuoi fare il reset commenta la riga con //.
+Se vuoi scrivere più registri alla volta usa il comando:
+
+```js
+modbus.addCmd([1, 10, 100, 1000])
+```
+
+che scrive dal registro 60 in avanti. Se vuoi modificare il registro di partenza vai in modbus.js e modifica la riga 122.
 
 Buon lavoro!
