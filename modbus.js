@@ -137,6 +137,7 @@ function run () {
                 console.log(data)
             })
             .then(function () {
+                process.exit(0)
                 //timeoutRunRef = setTimeout(run, timeoutRate)
             })
             .catch(function (e) {
