@@ -135,10 +135,11 @@ function run () {
         client.readHoldingRegisters(0, 100) //leggo tutti i registri
             .then(function (data) {
                 console.log(data)
+                eventEmitter.emit('data', data)
             })
             .then(function () {
-                process.exit(0)
-                //timeoutRunRef = setTimeout(run, timeoutRate)
+                //process.exit(0)
+                timeoutRunRef = setTimeout(run, timeoutRate)
             })
             .catch(function (e) {
                 checkError(e)
@@ -154,5 +155,5 @@ function addCmd (cmd) {
 module.exports = {
     connect: connect,
     addCmd: addCmd,
-    // event: eventEmitter 
+    event: eventEmitter 
 }

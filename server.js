@@ -17,15 +17,15 @@ app.all('*', (req, res) => {
   res.sendFile(__dirname + req.url)
 })
 
-// http.listen(port, () => {
-//   console.log(`Socket.IO server running at port: ${port}`)
-// })
+http.listen(port, () => {
+  console.log(`Socket.IO server running at port: ${port}`)
+})
 
 modbus.connect()
 
-// modbus.event.on('data', function (data) {
-//     eventEmitter.emit('data', data)
-// })
+modbus.event.on('data', function (data) {
+    io.emit('data', data)
+})
 
 modbus.addCmd('RESET')
 modbus.addCmd([1, 10, 100, 1000])
