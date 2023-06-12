@@ -21,13 +21,19 @@ http.listen(port, () => {
   console.log(`Socket.IO server running at port: ${port}`)
 })
 
-modbus.connect()
+// modbus.connect()
 
-modbus.event.on('data', function (data) {
-    io.emit('data', data)
+// modbus.event.on('data', function (data) {
+//   io.emit('data', data)
+// })
+
+// modbus.addCmd('RESET')
+// modbus.addCmd([1, 10, 100, 1000])
+
+io.on('connection', (socket) => {
+  console.log('CONNECTION')
+
+  socket.on('END', val => {
+    process.exit(0)
+  })
 })
-
-modbus.addCmd('RESET')
-modbus.addCmd([1, 10, 100, 1000])
-
-
