@@ -27,13 +27,13 @@ modbus.event.on('data', function (data) {
   io.emit('data', data)
 })
 
-modbus.addCmd('RESET')
-modbus.addCmd([1, 10, 100, 1000])
-
 io.on('connection', (socket) => {
   console.log('CONNECTION')
-
-  socket.on('END', val => {
-    process.exit(0)
+  
+  socket.on('start', val => {
+    modbus.addCmd([1, 10, 100, 1000])
+  })
+  socket.on('stop', val => {
+    modbus.addCmd('RESET')
   })
 })
