@@ -31,12 +31,20 @@ io.on('connection', (socket) => {
   console.log('CONNECTION')
   
   socket.on('start', val => {
-    //modbus.addCmd([1, 10, 100, 1000])
-    modbus.addCmd([2, 110])
+    modbus.addCmd([1, 10, 100, 1000])
     console.log('START')
   })
-  socket.on('stop', val => {
+  socket.on('stop', _ => {
     modbus.addCmd('RESET')
     console.log('STOP')
   })
+  socket.on('test', data => {
+    console.log('TEST')
+    modbus.addCmd([data.Set_Rpm1_Utensile, 
+      data.Set_Rpm2_Utensile, 
+      data.On_Rpm_Utensile, 
+      data.Off_Rpm_Utensile, 
+      data.Tempo_Rpm_Utensile])
+  })
+
 })
