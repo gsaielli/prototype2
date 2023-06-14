@@ -105,8 +105,7 @@ function run () {
                     console.log('ERROR in writeRegisters 2: ', e.message)
                 })
         }
-        else
-            if (dataToWrite.length === 2)
+        else if (dataToWrite.length === 2)
                 client.writeRegisters(dataToWrite[0], [dataToWrite[1]])
                     .then(function (d) {
                         console.log('OK writeRegisters 3: ', d)
@@ -118,7 +117,7 @@ function run () {
                         checkError(e)
                         console.log('ERROR in writeRegisters 3: ', e.message)
                     })
-            else
+        else
                 client.writeRegisters(60, dataToWrite)
                     .then(function (d) {
                         console.log('OK writeRegisters 4: ', d)

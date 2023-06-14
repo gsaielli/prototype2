@@ -31,7 +31,8 @@ io.on('connection', (socket) => {
   console.log('CONNECTION')
   
   socket.on('start', val => {
-    modbus.addCmd([1, 10, 100, 1000])
+    //modbus.addCmd([1, 10, 100, 1000])
+    modbus.addCmd([2, 110])
     console.log('START')
   })
   socket.on('stop', val => {
